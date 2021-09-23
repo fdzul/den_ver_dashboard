@@ -190,3 +190,93 @@ heatmap_confirmados(dataset = x,
 </body>
 </html>
 
+
+### **<span style="color:#7d9029"> Bump Maps Municipios </span>**
+
+<html>
+<head>
+<style>
+</style>
+</head>
+<body>
+
+<div >
+  <h2></h2>
+  <p></p>
+  
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulados 2020 </span>**
+```{r, out.width="100%", out.height="100%"}
+source('C:/Users/felip/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+library(dplyr)
+static_bump_map(dataset = x,
+                year = "2020",
+                state = TRUE,
+                size_text_value = 3,
+                size_text = 3,
+                country_text_x = 0.5,
+                country_text_y = 0.8,
+                line_size = 1.5,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2021 </span>**
+```{r, out.width="100%", out.height="100%"}
+source('C:/Users/felip/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+library(dplyr)
+static_bump_map(dataset = x,
+                year = "2021",
+                state = TRUE,
+                size_text_value = 3,
+                size_text = 3,
+                country_text_x = 0.5,
+                country_text_y = 0.8,
+                line_size = 1.5,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos Acumulado 2020 Veracruz </span>**
+```{r}
+source('C:/Users/felip/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2020",
+                state = FALSE,
+                cve_edo = "30",
+                axis_start = 3,
+                country_text_x = .3,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos Acumulados 2021 Veracruz </span>**
+```{r}
+source('C:/Users/felip/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
+static_bump_map(dataset = x,
+                year = "2021",
+                state = FALSE,
+                cve_edo = "30",
+                axis_start = 3,
+                country_text_x = .3,
+                country_text_y = 0.1,
+                value_text = .3,
+                size_text_value = 4,
+                pal_vir = "viridis")
+```
+</div>
+</div>
+
+</div>
+</body>
+</html>
+
+
+
+
+
