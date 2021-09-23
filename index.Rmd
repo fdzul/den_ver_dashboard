@@ -178,20 +178,6 @@ heatmap_confirmados(dataset = x,
 
 <div style = "display: grid; width: 1px; grid-template-columns: 700px 700px; align-items: start; justify-content: space-between;">
 #### **<span style="color:blue"> Casos por Municipio (Areal Map) </span>**
-<img src="den_2021_areal_animap.gif" width="700" height="700" />
-<div>
-#### **<span style="color:blue"> Casos por  Municipio (Dot Map)  </span>**
-<img src="den_2021_dot_animap.gif" width="700" height="700" />
-</div>
-</div>
-
-
-</div>
-</body>
-</html>
-
-<div style = "display: grid; width: 1px; grid-template-columns: 700px 700px; align-items: start; justify-content: space-between;">
-#### **<span style="color:blue"> Casos por Municipio (Areal Map) </span>**
 <img src="den_ver_2021_areal_animap.gif" width="700" height="700" />
 <div>
 #### **<span style="color:blue"> Casos por  Municipio (Dot Map)  </span>**
