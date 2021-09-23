@@ -310,6 +310,122 @@ static_bump_map_loc(dataset = x,
 </body>
 </html>
 
+### **<span style="color:#7d9029"> Distribución de Casos </span>**
+
+```{r}
+# step 1. dengue cases geocoded ####
+load("C:/Users/felip/Dropbox/geocoding_mex_2021/den_mex_2021/9.RData_geocoded/den2021_positivos.RData")
+y <- z[stringr::str_which(z$formatted_address,  " Mexico"),]
+
+y <- y |>
+  as.data.frame()|>
+  sf::st_as_sf(coords = c("long", "lat"),
+               crs = 4326)
+
+ver <- rgeomex::AGEE_inegi19_mx |>
+  dplyr::filter(CVE_ENT == "30")
+
+y <- y[ver,]
+# step 2. create the palette ####
+pal <- leaflet::colorBin(palette = fishualize::fish(n = length(unique(y$SEM)), 
+                                                    option = "Hypsypops_rubicundus",
+                                                    end = 1,
+                                                    alpha = .5),
+                         domain = y$SEM,
+                         bins = 10)
+
+y1 <- y |>
+    dplyr::filter(DENGUE_SER_TRIPLEX == 1)
+
+y2 <- y |>
+    dplyr::filter(DENGUE_SER_TRIPLEX == 2)
+y3 <- y |>
+    dplyr::filter(DENGUE_SER_TRIPLEX == 3)
+y4 <- y |>
+    dplyr::filter(DENGUE_SER_TRIPLEX == 4)
+########################
+
+# step 3. generate maps ####
+l <- leaflet::leaflet(y) %>% 
+    leaflet::addTiles() %>% 
+  leaflet::addCircleMarkers(color = ~pal(SEM),
+                            group = "DENV",
+                            stroke = FALSE, 
+                            opacity = 0.5,
+                            fillOpacity = 0.5) %>%
+    leaflet::addCircleMarkers(data = y1,
+                              group = "Serotipo 1",
+                              color = ~pal(SEM),
+                              stroke = FALSE, 
+                              opacity = 0.5,
+                              fillOpacity = 0.5) %>%
+    leaflet::addCircleMarkers(data = y2,
+                              group = "Serotipo 2",
+                              color = ~pal(SEM),
+                              stroke = FALSE, 
+                              opacity = 0.5,
+                              fillOpacity = 0.5) %>%
+    leaflet::addCircleMarkers(data = y1,
+                              group = "Serotipo 3",
+                              color = ~pal(SEM),
+                              stroke = FALSE, 
+                              opacity = 0.5,
+                              fillOpacity = 0.5) %>%
+    leaflet::addCircleMarkers(data = y4,
+                              group = "Serotipo 4",
+                              color = ~pal(SEM),
+                              stroke = FALSE, 
+                              opacity = 0.5,
+                              fillOpacity = 0.5) %>%
+  #leaflet::addPolylines(data = rgeomex::loc_inegi19_mx,
+   #                     color = "darkblue",
+    #                    label = ~NOMGEO,
+     #                   group = "Localidad",
+      #                  fillOpacity = .7,
+       #                 opacity = .9,
+        #                weight = .5) %>%
+  #leaflet.extras::addSearchFeatures(targetGroups = "Localidad",
+                                 #   options = leaflet.extras::searchFeaturesOptions(zoom #= 14, 
+                                                                                    #openPopup = FALSE)) %>%
+  
+    leaflet::addLegend("bottomright", 
+                       group = "legend",
+                       pal = pal, 
+                       values = ~SEM,
+                       title = "Semana Epidemiológica",
+                       opacity = 0.9,
+                       position = "bottomleft")
+
+# Step 4. generate the tiles and provider ###
+esri <- grep("^Esri|CartoDB|OpenStreetMap", 
+             leaflet::providers, 
+             value = TRUE)
+
+for (provider in esri) {
+    l <- l %>% leaflet::addProviderTiles(provider, 
+                                group = provider)
+}
+
+l %>%
+    leaflet::addLayersControl(baseGroups = names(esri),
+                     overlayGroups = c("legend", "DENV", "Serotipo 1",
+                                       "Serotipo 2", "Serotipo 3",
+                                       "Serotipo 4"),
+                     options = leaflet::layersControlOptions(collapsed = TRUE)) %>%
+    leaflet::addMiniMap(tiles = esri[[1]], 
+               toggleDisplay = TRUE,
+               position = "bottomleft") %>%
+    htmlwidgets::onRender("
+    function(el, x) {
+      var myMap = this;
+      myMap.on('baselayerchange',
+        function (e) {
+          myMap.minimap.changeLayer(L.tileLayer.provider(e.name));
+        })
+    }")
+
+```
+
 
 ### **<span style="color:#7d9029"> Cadenas de Transmisión  </span>**
 
