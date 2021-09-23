@@ -191,7 +191,7 @@ heatmap_confirmados(dataset = x,
 </html>
 
 
-### **<span style="color:#7d9029"> Bump Maps Municipios </span>**
+### **<span style="color:#7d9029"> Bump Maps </span>**
 
 <html>
 <head>
@@ -205,7 +205,7 @@ heatmap_confirmados(dataset = x,
   <p></p>
   
 <div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
-#### **<span style="color:blue"> Rank Casos Acumulados 2020 </span>**
+#### **<span style="color:blue"> Rank Casos confirmados 2020 </span>**
 ```{r, out.width="100%", out.height="100%"}
 source('C:/Users/felip/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
 library(dplyr)
@@ -221,7 +221,7 @@ static_bump_map(dataset = x,
 ```
 
 <div>
-#### **<span style="color:blue"> Rank Casos Acumulados 2021 </span>**
+#### **<span style="color:blue"> Rank Casos confirmados 2021 </span>**
 ```{r, out.width="100%", out.height="100%"}
 source('C:/Users/felip/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
 library(dplyr)
@@ -239,7 +239,7 @@ static_bump_map(dataset = x,
 </div>
 
 <div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
-#### **<span style="color:blue"> Rank Casos Acumulado 2020 Veracruz </span>**
+#### **<span style="color:blue"> Rank Casos confirmados 2020 Veracruz </span>**
 ```{r}
 source('C:/Users/felip/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
 static_bump_map(dataset = x,
@@ -255,7 +255,7 @@ static_bump_map(dataset = x,
 ```
 
 <div>
-#### **<span style="color:blue"> Rank Casos Acumulados 2021 Veracruz </span>**
+#### **<span style="color:blue"> Rank Casos confirmados 2021 Veracruz </span>**
 ```{r}
 source('C:/Users/felip/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map.R')
 static_bump_map(dataset = x,
@@ -268,6 +268,40 @@ static_bump_map(dataset = x,
                 value_text = .3,
                 size_text_value = 4,
                 pal_vir = "viridis")
+```
+</div>
+</div>
+
+<div style = "display: grid; width: 2px; grid-template-columns: 750px 750px; align-items: start; justify-content: start; justify-items: center;">
+#### **<span style="color:blue"> Rank Casos confirmados 2020 Veracruz </span>**
+```{r}
+source('C:/Users/felip/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map_loc.R')
+library(magrittr)
+library(dplyr)
+static_bump_map_loc(dataset = x,
+                    year = "2020",
+                    cve_edo = "30",
+                    country_text_x = .01,
+                    country_text_y = 0.08,
+                    axis_start = 0.4,
+                    value_text = 0.36,
+                    size_text_value = 4,
+                    pal_vir = "viridis")
+```
+
+<div>
+#### **<span style="color:blue"> Rank Casos confirmados 2021 Veracruz </span>**
+```{r}
+source('C:/Users/felip/Dropbox/r_developments/r_dashboards/github_pages/test_dashboard/3.Functions/static_bump_map_loc.R')
+static_bump_map_loc(dataset = x,
+                    year = "2021",
+                    cve_edo = "30",
+                    country_text_x = .01,
+                    country_text_y = 0.08,
+                    axis_start = 0.4,
+                    value_text = 0.36,
+                    size_text_value = 4,
+                    pal_vir = "viridis")
 ```
 </div>
 </div>
