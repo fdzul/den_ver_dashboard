@@ -533,7 +533,6 @@ l %>%
 
 
 ### **<span style="color:#7d9029">Heatmap </span>**
-
 <html>
 <head>
 <style>
@@ -549,7 +548,6 @@ l %>%
 <div class="myDiv1">
   <h2></h2>
   <p></p>
-  
 #### **<span style="color:white">Heatmap de casos confirmados por Jurisdición </span>**
 ```{r}
 heatmap_confirmados(dataset = x, 
@@ -576,3 +574,226 @@ heatmap_confirmados(dataset = x,
 </body>
 </html>
 
+
+### **<span style="color:#7d9029">Canal Endémico </span>**
+<html>
+<head>
+<style>
+.myDiv1 {
+  border: 2px outset darkgreen;
+  background-color: darkgreen;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="myDiv1">
+  <h2></h2>
+  <p></p>
+#### **<span style="color:white">Casos 2020 versus Casos 2021</span>**
+```{r}
+plotly::ggplotly(gginnards::delete_layers(boldenr::plot_arbovirosis(x = x, 
+                                           state = "VERACRUZ",
+                                           year1 = 2020,
+                                           year2 = 2021) +
+                   ggplot2::theme(legend.position = "none"), 
+                   match_type ="GeomText"))
+
+```
+
+#### **<span style="color:white">Canal Endémico Estatal </span>**
+```{r}
+load("C:/Users/felip/OneDrive/automatic_read_sinave/8.RData/epid_channel_data_js.RData")
+plotly::ggplotly(boldenr::epi_channel(x = boldenr::dendata_epichannel,
+                                      edo = "VERACRUZ", 
+                                      jur = NULL,
+                                      y = x,
+                                      year1 = 2020,
+                                      year2 = 2021,
+                                      x_epi = 25, y_epi = 400,
+                                      x_alerta = 36, y_alerta = 250, 
+                                      x_seg = 37, y_seg = 120,
+                                      x_exito = 37, y_exito = 55))
+```
+
+#### **<span style="color:white">Canal Endémico Jurisdicción Pánuco </span>**
+```{r}
+load("C:/Users/felip/OneDrive/automatic_read_sinave/8.RData/epid_channel_data_js.RData")
+plotly::ggplotly(boldenr::epi_channel(x = y,
+                                      edo = "VERACRUZ", 
+                                      jur = "PANUCO",
+                                      mpo = NULL,
+                                      y = x,
+                                      year1 = 2020,
+                                      year2 = 2021,
+                                      x_epi = 30, y_epi = 25,
+                                      x_alerta = 38, y_alerta = 10, 
+                                      x_seg = 38, y_seg = 5,
+                                      x_exito = 40, y_exito = 1))
+```
+
+#### **<span style="color:white">Canal Endémico Jurisdicción Tuxpan </span>**
+```{r}
+load("C:/Users/felip/OneDrive/automatic_read_sinave/8.RData/epid_channel_data_js.RData")
+plotly::ggplotly(boldenr::epi_channel(x = y,
+                                      edo = "VERACRUZ", 
+                                      jur = "TUXPAN",
+                                      mpo = NULL,
+                                      y = x,
+                                      year1 = 2020,
+                                      year2 = 2021,
+                                      x_epi = 25, y_epi = 25,
+                                      x_alerta = 38, y_alerta = 10, 
+                                      x_seg = 38, y_seg = 5,
+                                      x_exito = 40, y_exito = 1))
+```
+
+#### **<span style="color:white">Canal Endémico Jurisdicción Poza Rica </span>**
+```{r}
+load("C:/Users/felip/OneDrive/automatic_read_sinave/8.RData/epid_channel_data_js.RData")
+plotly::ggplotly(boldenr::epi_channel(x = y,
+                                      edo = "VERACRUZ", 
+                                      jur = "POZA RICA",
+                                      mpo = NULL,
+                                      y = x,
+                                      year1 = 2020,
+                                      year2 = 2021,
+                                      x_epi = 25, y_epi = 45,
+                                      x_alerta = 38, y_alerta = 25, 
+                                      x_seg = 38, y_seg = 15,
+                                      x_exito = 40, y_exito = 5))
+```
+
+#### **<span style="color:white">Canal Endémico Jurisdicción Martínez de la Torre </span>**
+```{r}
+load("C:/Users/felip/OneDrive/automatic_read_sinave/8.RData/epid_channel_data_js.RData")
+plotly::ggplotly(boldenr::epi_channel(x = y,
+                                      edo = "VERACRUZ", 
+                                      jur = "MARTINEZ DE LA TORRE",
+                                      mpo = NULL,
+                                      y = x,
+                                      year1 = 2020,
+                                      year2 = 2021,
+                                      x_epi = 25, y_epi = 30,
+                                      x_alerta = 32, y_alerta = 10, 
+                                      x_seg = 38, y_seg = 5,
+                                      x_exito = 42, y_exito = 1))
+```
+
+#### **<span style="color:white">Canal Endémico Jurisdicción Xalapa </span>**
+```{r}
+load("C:/Users/felip/OneDrive/automatic_read_sinave/8.RData/epid_channel_data_js.RData")
+plotly::ggplotly(boldenr::epi_channel(x = y,
+                                      edo = "VERACRUZ", 
+                                      jur = "JALAPA",
+                                      mpo = NULL,
+                                      y = x,
+                                      year1 = 2020,
+                                      year2 = 2021,
+                                      x_epi = 25, y_epi = 20,
+                                      x_alerta = 38, y_alerta = 10, 
+                                      x_seg = 41, y_seg = 4,
+                                      x_exito = 42, y_exito = 1))
+```
+
+#### **<span style="color:white">Canal Endémico Jurisdicción Veracruz </span>**
+```{r}
+load("C:/Users/felip/OneDrive/automatic_read_sinave/8.RData/epid_channel_data_js.RData")
+plotly::ggplotly(boldenr::epi_channel(x = y,
+                                      edo = "VERACRUZ", 
+                                      jur = "VERACRUZ",
+                                      mpo = NULL,
+                                      y = x,
+                                      year1 = 2020,
+                                      year2 = 2021,
+                                      x_epi = 25, y_epi = 70,
+                                      x_alerta = 38, y_alerta = 40, 
+                                      x_seg = 38, y_seg = 18,
+                                      x_exito = 38, y_exito = 6))
+```
+
+#### **<span style="color:white">Canal Endémico Jurisdicción Córdoba </span>**
+```{r}
+load("C:/Users/felip/OneDrive/automatic_read_sinave/8.RData/epid_channel_data_js.RData")
+plotly::ggplotly(boldenr::epi_channel(x = y,
+                                      edo = "VERACRUZ", 
+                                      jur = "CORDOBA",
+                                      mpo = NULL,
+                                      y = x,
+                                      year1 = 2020,
+                                      year2 = 2021,
+                                      x_epi = 20, y_epi = 25,
+                                      x_alerta = 40, y_alerta = 12, 
+                                      x_seg = 34, y_seg = 4,
+                                      x_exito = 42, y_exito = 1))
+```
+
+#### **<span style="color:white">Canal Endémico Jurisdicción Orizaba </span>**
+```{r}
+load("C:/Users/felip/OneDrive/automatic_read_sinave/8.RData/epid_channel_data_js.RData")
+plotly::ggplotly(boldenr::epi_channel(x = y,
+                                      edo = "VERACRUZ", 
+                                      jur = "ORIZABA",
+                                      mpo = NULL,
+                                      y = x,
+                                      year1 = 2020,
+                                      year2 = 2021,
+                                      x_epi = 20, y_epi = 25,
+                                      x_alerta = 42, y_alerta = 10, 
+                                      x_seg = 40, y_seg = 3,
+                                      x_exito = 42, y_exito = 1))
+```
+
+#### **<span style="color:white">Canal Endémico Jurisdicción San Ándres Tuxtla </span>**
+```{r}
+load("C:/Users/felip/OneDrive/automatic_read_sinave/8.RData/epid_channel_data_js.RData")
+plotly::ggplotly(boldenr::epi_channel(x = y,
+                                      edo = "VERACRUZ", 
+                                      jur = "SAN ANDRES TUXTLA",
+                                      mpo = NULL,
+                                      y = x,
+                                      year1 = 2020,
+                                      year2 = 2021,
+                                      x_epi = 20, y_epi = 25,
+                                      x_alerta = 40, y_alerta = 12, 
+                                      x_seg = 40, y_seg = 5,
+                                      x_exito = 42, y_exito = 1))
+```
+
+#### **<span style="color:white">Canal Endémico Jurisdicción Cosamaloapan </span>**
+```{r}
+load("C:/Users/felip/OneDrive/automatic_read_sinave/8.RData/epid_channel_data_js.RData")
+plotly::ggplotly(boldenr::epi_channel(x = y,
+                                      edo = "VERACRUZ", 
+                                      jur = "COSAMALOAPAN",
+                                      mpo = NULL,
+                                      y = x,
+                                      year1 = 2020,
+                                      year2 = 2021,
+                                      x_epi = 20, y_epi = 15,
+                                      x_alerta = 40, y_alerta = 12, 
+                                      x_seg = 35, y_seg = 5,
+                                      x_exito = 42, y_exito = 1))
+```
+
+#### **<span style="color:white">Canal Endémico Jurisdicción Coatzacoalco </span>**
+```{r}
+load("C:/Users/felip/OneDrive/automatic_read_sinave/8.RData/epid_channel_data_js.RData")
+plotly::ggplotly(boldenr::epi_channel(x = y,
+                                      edo = "VERACRUZ", 
+                                      jur = "COATZACOALCOS",
+                                      mpo = NULL,
+                                      y = x,
+                                      year1 = 2020,
+                                      year2 = 2021,
+                                      x_epi = 20, y_epi = 90,
+                                      x_alerta = 36, y_alerta = 50, 
+                                      x_seg = 35, y_seg = 15,
+                                      x_exito = 42, y_exito = 1))
+
+```
+
+</div>
+</body>
+</html>
