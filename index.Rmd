@@ -532,3 +532,47 @@ l %>%
 > las cadenas de transmisión son actualizadas los lunes
 
 
+### **<span style="color:#7d9029"> Casos por municipio </span>**
+
+<html>
+<head>
+<style>
+.myDiv1 {
+  border: 2px outset darkgreen;
+  background-color: darkgreen;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="myDiv1">
+  <h2></h2>
+  <p></p>
+  
+#### **<span style="color:white">Veracruz</span>**
+```{r}
+heatmap_confirmados(dataset = x, 
+                    year = 2021, 
+                    size_text = 3,
+                    state = "VERACRUZ",
+                    JS = TRUE,
+                    MPO = TRUE,
+                    EDO = FALSE)
+```
+
+#### **<span style="color:white">Veracruz</span>**
+```{r}
+heatmap_confirmados(dataset = x, 
+                    year = 2021, 
+                    size_text = 3,
+                    state = "VERACRUZ",
+                    JS = FALSE,
+                    MPO = TRUE,
+                    EDO = FALSE)
+```
+
+</div>
+</body>
+</html>
+
