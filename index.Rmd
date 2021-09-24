@@ -532,7 +532,7 @@ l %>%
 > las cadenas de transmisión son actualizadas los lunes
 
 
-### **<span style="color:#7d9029"> Casos por municipio </span>**
+### **<span style="color:#7d9029">Heatmap </span>**
 
 <html>
 <head>
@@ -550,7 +550,7 @@ l %>%
   <h2></h2>
   <p></p>
   
-#### **<span style="color:white">Veracruz</span>**
+#### **<span style="color:white">Heatmap de casos confirmados por Jurisdición </span>**
 ```{r}
 heatmap_confirmados(dataset = x, 
                     year = 2021, 
@@ -561,7 +561,7 @@ heatmap_confirmados(dataset = x,
                     EDO = FALSE)
 ```
 
-#### **<span style="color:white">Veracruz</span>**
+#### **<span style="color:white">Heatmap de casos confirmados por Municipio</span>**
 ```{r}
 heatmap_confirmados(dataset = x, 
                     year = 2021, 
