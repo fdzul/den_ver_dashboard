@@ -314,7 +314,7 @@ static_bump_map_loc(dataset = x,
 
 ```{r}
 # step 1. dengue cases geocoded ####
-load("C:/Users/felip/Dropbox/geocoding_mex_2021/den_mex_2021/9.RData_geocoded/den2021_positivos.RData")
+load("C:/Users/felip/Dropbox/geocoding_mex_2021/den_ver_2021/9.RData_geocoded/den2021_positivos.RData")
 y <- z[stringr::str_which(z$formatted_address,  " Mexico"),]
 
 y <- y |>
@@ -432,15 +432,15 @@ l %>%
 ```{r}
 library(magrittr)
 # step 1. load the dataset ####
-load("C:/Users/felip/Dropbox/space_time_analysis/knox_tests/10.results/country/knox_2021_country.RData")
+load("C:/Users/felip/Dropbox/space_time_analysis/knox_tests/10.results/edos/30_veracruz/knox_2021_veracruz.RData")
 
 # Step 2. create the list of localities names ###
-name_loc <- as.list(stringr::str_sub(names(knox_2021_country),
+name_loc <- as.list(stringr::str_sub(names(knox_2021_veracruz),
                          start = -0,
                          end = -7))
 
 # Step 3. create the list of localities ids ###
-cve_edo <- as.list(stringr::str_extract(names(knox_2021_country),
+cve_edo <- as.list(stringr::str_extract(names(knox_2021_veracruz),
                                             pattern = "[[:digit:].,]{2}"
                                             ))
 
@@ -457,7 +457,7 @@ st_link_maps <- function(x, y, z){
 
 
 # Step 5. make the st_link maps ####
-knox <- purrr::pmap(.l = list(x = knox_2021_country,
+knox <- purrr::pmap(.l = list(x = knox_2021_veracruz,
                            y = name_loc,
                            z = cve_edo),
                  .f = st_link_maps)
@@ -468,12 +468,6 @@ w  <- purrr::map_df(.x = knox,
                      .f = function(x){x$st_cases_week})
 st_link_week <- purrr::map_df(.x = knox,
                            .f = function(x){x$st_link_week})
-
-ver <- rgeomex::AGEE_inegi19_mx |>
-  dplyr::filter(CVE_ENT == "30")
-
-w <- w[ver, ]
-st_link_week <- st_link_week[ver, ]
 
 # Step 6 plot the leaflet map ####
 pal <- leaflet::colorFactor(palette = fishualize::fish(n = length(unique(w$week_factor)),
